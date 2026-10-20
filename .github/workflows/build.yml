@@ -19,11 +19,12 @@ jobs:
           ndk-version: r26b
 
       - name: Compilar com ndk-build
-        working-directory: jni
-        run: ndk-build
+        working-directory: app/src/main/jni
+        run: ndk-build NDK_LIBS_OUT=${{ github.workspace }}/libs
 
       - name: Enviar as libs compiladas
         uses: actions/upload-artifact@v4
         with:
           name: libs
           path: libs/
+          if-no-files-found: error
