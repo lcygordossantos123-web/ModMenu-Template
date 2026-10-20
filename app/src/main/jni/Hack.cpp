@@ -8,7 +8,7 @@
 #include <chrono>
 #include <unistd.h>
 #include <pthread.h>          // <-- ADICIONADO (pthread_create / pthread_t)
-#include <GLES/gl.h>          // <-- ADICIONADO (GLES1: glMatrixMode, glLoadIdentity, glOrthof, glColor4fv, glVertexPointer, glEnableClientState...)
+#include <GLES/gl.h>          // <-- ADICIONADO (GLES1: glMatrixMode, glLoadIdentity, glOrthof, glColor4f, glVertexPointer...)
 #include <GLES2/gl2.h>        // mantido (glDrawArrays, glViewport, GL_LINE_LOOP...)
 #include "Offsets.h"
 #include "Config.h"
@@ -86,7 +86,7 @@ static bool w2s(const Vec3& w,Vec2& s){
     return true;
 }
 static void glBox(float x,float y,float w,float h,float c[4]){
-    glColor4fv(c); float v[]={x,y,x+w,y,x+w,y+h,x,y+h};
+    glColor4f(c[0],c[1],c[2],c[3]); float v[]={x,y,x+w,y,x+w,y+h,x,y+h};   // <-- CORRIGIDO (era glColor4fv(c))
     glEnableClientState(GL_VERTEX_ARRAY); glVertexPointer(2,GL_FLOAT,0,v);
     glDrawArrays(GL_LINE_LOOP,0,4); glDisableClientState(GL_VERTEX_ARRAY);
 }
