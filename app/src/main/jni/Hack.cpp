@@ -7,7 +7,9 @@
 #include <thread>
 #include <chrono>
 #include <unistd.h>
-#include <GLES2/gl2.h>
+#include <pthread.h>          // <-- ADICIONADO (pthread_create / pthread_t)
+#include <GLES/gl.h>          // <-- ADICIONADO (GLES1: glMatrixMode, glLoadIdentity, glOrthof, glColor4fv, glVertexPointer, glEnableClientState...)
+#include <GLES2/gl2.h>        // mantido (glDrawArrays, glViewport, GL_LINE_LOOP...)
 #include "Offsets.h"
 #include "Config.h"
 #include "KittyMemory/KittyMemory.h"
