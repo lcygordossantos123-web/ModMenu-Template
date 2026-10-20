@@ -11,7 +11,7 @@ LOCAL_CFLAGS := -w -s -Wno-error=format-security -fvisibility=hidden -fpermissiv
 LOCAL_CPPFLAGS := -w -s -Wno-error=format-security -fvisibility=hidden -Werror -std=c++17
 LOCAL_CPPFLAGS += -Wno-error=c++11-narrowing -fpermissive -Wall -fexceptions
 LOCAL_LDFLAGS += -Wl,--gc-sections,--strip-all,-llog
-LOCAL_LDLIBS := -llog -landroid -lEGL -lGLESv2
+LOCAL_LDLIBS := -llog -landroid -lEGL -lGLESv1_CM -lGLESv2 -lz
 LOCAL_ARM_MODE := arm
 
 LOCAL_C_INCLUDES += $(LOCAL_PATH)
@@ -28,6 +28,6 @@ Hack.cpp \
 	KittyMemory/MemoryPatch.cpp \
     KittyMemory/MemoryBackup.cpp \
     KittyMemory/KittyUtils.cpp \
-	And64InlineHook/And64InlineHook.cpp \
+	And64InlineHook/And64InlineHook.cpp
 
 include $(BUILD_SHARED_LIBRARY)
